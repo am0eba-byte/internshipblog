@@ -1,15 +1,78 @@
 /* GENERAL STYLE */
+body {
+background-color:#373737;
+color: white;
 
+}
 
 
 
 /* HEADER */
 
+header {
+    background-image:radial-gradient(#366981, #686868);
+    text-align:center;
+   border-radius: 20px;
+   padding: .5px;
+    
+}
+
+header, h1 {
+     font-family:'Wallpoet', cursive;
+}
+
+header, h3 {
+    font-family: 'Special Elite', cursive;
+}
 
 
 
 /* BLOG BODY */
 
+section {
+    background-image: linear-gradient(to left,#3b3b3b, #6694aa, #3b3b3b);
+    margin: 30px;
+    border-radius: 20px;
+}
 
+div.intro {
+    font-family: 'Special Elite', cursive;
+    font-weight: bold;
+    background-color: silver;
+    border-radius: 10px;
+    color: black;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin:30px;
+   
+}
+
+div.blogpost {
+    background-image:linear-gradient(to left,#b0b0b0, #a8bac5, #b0b0b0);
+    border-radius: 15px;
+    color: black;
+    padding-left: 10px;
+padding-right: 10px;
+}
+
+p.span { 
+font-family: 'Special Elite', cursive;
+text-align: right;
+padding-right: 45px;
+}
+
+p.post {
+    font-family: 'Klee One', cursive;
+   
+    
+}
+
+
+p.sig {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 50px;
+}
 
 /* FOOTER */
