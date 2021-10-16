@@ -1,6 +1,6 @@
 /* GENERAL STYLE */
 body {
-background-color:#373737;
+background-image: linear-gradient(to right,#505050, #7ca19e, #799177, #789a97, #505050);
 color: white;
 
 }
@@ -42,7 +42,7 @@ img.headImg {
 /* BLOG BODY */
 
 section {
-    background-image: linear-gradient(to left,#3b3b3b, #6694aa, #3b3b3b);
+    background-image: linear-gradient(to left,#5a6c5c, gray, #789a96, gray, #5a6c5c);
     margin: 30px;
     border-radius: 20px;
 }
@@ -57,6 +57,12 @@ div.intro {
     padding-right: 25px;
     margin:30px;
    
+}
+
+div.blogWrap {
+    padding-left: 15px;
+padding-right: 15px;
+padding-bottom: 1px;
 }
 
 div.blogpost {
