@@ -16,8 +16,10 @@
     </head>
     <body>
         <header>
-            <h1>Mia' Internship Blog</h1>
-            <h3>Reports and weekly updates on her Larson Texts adventure</h3>
+            <img class="headImg" src="images/moon.jpg"/>
+            <div class="headText"><h1>Mia' Internship Blog</h1>
+            <h3>Reports and weekly updates on her Larson Texts adventure</h3></div>
+            <img class="headImg" src="images/heavy_breathing.png"/>
         </header>
         <section>
             <div class="intro">
@@ -42,6 +44,41 @@
                     </p>
                     <p class="sig">-Mia</p>
                     <p></p>
+                </div>
+                <div class="blogpost">
+                    <p class="span">
+                        Week of 10/12-10/14 - Third Week
+                    </p>
+                    <p class="post">
+                        Week three was the week of data validation reckoning, it seems. On Tuesday, I Googled and JSON-schema-ed my little heart out to create some well-formed code which validated the rules for each object within the competencies dataset of Arjuna... for the most part. The schema did the job in that it prevented incorrect data inputs for each object property, for example, if an object <span class="code">"Token"</span> has a key-value pair where <span class="code">{"type": "string"}</span>, any data inputs entered into that object that are not a string (a number, a boolean, null, etc.) would be rejected. This was all well and good for <i>object</i> data, but we ran into some trouble with data that contained an <i>array</i>. For example:</p> 
+                    
+                    <div class="code">
+                        "Definition": {
+                        "type": "array",
+                            "items": {
+                                "language": {"type": "string"},
+                                "text": {"type": "string"}
+                                    }
+                           }
+                    </div>
+                    
+                    <p class="post"> A <span class="code">"Definition"</span> object contained an array of two property types, <span class="code">"language"</span> and <span class="code">"text"</span>. The <span class="code">"language"</span> property is set to only be allowed to contain a <span class="code">"string"</span>, but in the competencies data, the language inputs conform to the ISO language keywords - such as <span class="code">"en-US"</span> for American English or <span class="code">"es-US"</span> for American Spanish. Setting the data type property as <span class="code">"string"</span> is not specific enough to prevent any strings other than the ISO language codes Arjuna uses from occurring within the <span class="code">"language"</span> property. Since JSON Schema is such a new language, there hasn't been documentation or rules created to make string datatypes be more specific.
+                       </p>
+                    <p class="post">As I continued battle-testing my schema, I realized a major issue with JSON schema's limited data validation powers: since JSON Schema's syntax does not include code that can define how many times an array can repeat itself within an object array, preventing extra properties from being allowed to occur beyond the given items in the object arrays is impossible. It successfully prevents improper property types from being validated, but when I add in a new random key-value pair that I did not define within that object, it validates anyways. For example, the <span class="code">"Tags"</span> object array:
+                    </p>
+                    <div class="code">
+                        "Tags": {
+                            "type": "array",
+                                "items": {
+                                    "language": {"type": "string"},
+                                    "text": {"type": "string"},
+                                    "public": {"type": "boolean"}
+                                    }
+                                },
+                    </div>
+                    <p class="post">The object array <span class="code">"Tags"</span> can have multiple sets of the three items <span class="code">"language", "text", "public"</span>. JSON schema does not provide the option of defining exactly how many times this repetition of items is allowed to occur, and when I input random incorrect key-value items, it validated the code when it should not have. Alan and I had a discussion about this, and by the end of it, Alan and I agreed that JSON schema was simply not the way to go in terms of data validation. For now, since there are already multiple layers of data validation in place when the data is created, Alan feels comfortable going without another layer of validation for now - especially since this project is crunched for time.</p>
+                    <p class="post">While we alas are bagging the JSON schema route, I learned a whole lot about JSON and OOP in general in the process of creating this schema, so I'm happy that my work has lead to new discoveries - however unfruitful. I am going to document my JSON schema discoveries, and continue working on the data in new ways that will hopefully be more helpful to the project in the coming weeks. Sorry JSON schema, but you are not Relax-NG, and therefore you stink.</p>
+                    <p class="sig">-Mia</p>
                 </div>
             </div>
             
