@@ -1,6 +1,6 @@
 /* GENERAL STYLE */
 body {
-background-image: linear-gradient(to right,#505050, #7ca19e, #799177, #789a97, #505050);
+background-image: linear-gradient(to right,#2a2a2a, #7ca19e, #799177, #789a97, #2a2a2a);
 color: white;
 
 }
@@ -10,7 +10,7 @@ color: white;
 /* HEADER */
 
 header {
-    background-image:radial-gradient(#366981, #686868);
+    background-image:radial-gradient(#366981, #333232);
     text-align:center;
    border-radius: 20px;
    padding: .5px;
@@ -56,6 +56,8 @@ div.intro {
     padding-left: 25px;
     padding-right: 25px;
     margin:30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
    
 }
 
@@ -71,12 +73,15 @@ div.blogpost {
     color: black;
     padding-left: 10px;
 padding-right: 10px;
+padding-top: 2px;
+  
 }
 
 p.span { 
 font-family: 'Special Elite', cursive;
 text-align: left;
 padding-left: 45px;
+text-decoration: underline;
 }
 
 p.post {
@@ -87,8 +92,8 @@ p.post {
 
 
 p.sig {
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-size: larger;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.3em;
     font-weight: bold;
     padding-right: 30%;
     text-align:right;
@@ -113,3 +118,28 @@ font-family:monospace;
 }
 
 /* FOOTER */
+
+footer {
+    background-image:radial-gradient(#366981, #333232);
+    text-align:center;
+   border-radius: 20px;
+   padding: .2px;
+   display:flex;
+   flex-direction:row;
+    justify-content:space-evenly;
+}
+
+p.foot {
+    font-family:'Wallpoet', cursive;
+    color: white;
+}
+
+p.foot a {
+    color: #ffe974;
+}
+
+p.foot a:hover {
+    color: aqua;
+}
+
+
