@@ -117,6 +117,10 @@ margin: auto;
 font-family:monospace;
 }
 
+b {
+   font-weight: bold;
+}
+
 /* FOOTER */
 
 footer {

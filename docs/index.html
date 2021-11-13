@@ -217,43 +217,122 @@
                         person, doing their best, learning as they go, same as me. </p>
                     <p class="sig">-Human</p>
                 </div>
-                <div class="blogpost"> 
+                <div class="blogpost">
                     <p class="span">Week of 11/2-11/4 - Sixth Week</p>
-                    <p class="post">
-                        Lots of discoveries and breakthroughs in development code/data generation this week! But first, a big update on the trials and tribulations of JSON schema coding for data validation: I finally found out why Arango was allowing extraneous objects to occur within the data, outside of those I had listed as properties in the JSON schema. Upon testing the schema I wrote for the <span class="code">scopes</span> collection, I realized something strange. Every time I pasted and saved the entirety of my schema code into the collection's Schema code entry block, each time I navigated away from the page and went back to look at the schema code in Arango, the last portion of my schema code was completely gone - including the last property definition, as well as my <span class="code">required:["...", "...", "..."]</span> and <span class="code">additionalProperties: false</span> parameters at the end of the schema rule. Those parameters, which Arango was automatically deleting, should've prevented any properties outside of those listed in the rule. I was baffled at why Arango was deleting parts of my code - normally, whenever there is a syntax error in the code, Arango simply will not allow you to save the schema, and will throw an error. Neither Arango nor VS Code flagged any portion of my schema as malformed. I then investigated my code to try to understand why Arango would delete whole portions of my code, and made a facepalm-deserving discovery: due to the misplacement of one little curly brace, my schema rule was improperly nested. I had an extra curly brace at the end of my second-to-last schema property rule, which closed the <span class="code">"rule":</span> property which contained all of the rules for the entire schema, instead of just the current property rule node I meant to close. This must be why Arango automatically deleted the following property rules and parameters; it assumed I had finished the code once it hit that extra end-curly brace, disregarding the rest of the nested items. Whoops... <i><b>**facepalm intensifies**</b></i>
+                    <p class="post"> Lots of discoveries and breakthroughs in development code/data
+                        generation this week! But first, a big update on the trials and tribulations
+                        of JSON schema coding for data validation: I finally found out why Arango
+                        was allowing extraneous objects to occur within the data, outside of those I
+                        had listed as properties in the JSON schema. Upon testing the schema I wrote
+                        for the <span class="code">scopes</span> collection, I realized something
+                        strange. Every time I pasted and saved the entirety of my schema code into
+                        the collection's Schema code entry block, each time I navigated away from
+                        the page and went back to look at the schema code in Arango, the last
+                        portion of my schema code was completely gone - including the last property
+                        definition, as well as my <span class="code">required:["...", "...",
+                            "..."]</span> and <span class="code">additionalProperties: false</span>
+                        parameters at the end of the schema rule. Those parameters, which Arango was
+                        automatically deleting, should've prevented any properties outside of those
+                        listed in the rule. I was baffled at why Arango was deleting parts of my
+                        code - normally, whenever there is a syntax error in the code, Arango simply
+                        will not allow you to save the schema, and will throw an error. Neither
+                        Arango nor VS Code flagged any portion of my schema as malformed. I then
+                        investigated my code to try to understand why Arango would delete whole
+                        portions of my code, and made a facepalm-deserving discovery: due to the
+                        misplacement of one little curly brace, my schema rule was improperly
+                        nested. I had an extra curly brace at the end of my second-to-last schema
+                        property rule, which closed the <span class="code">"rule":</span> property
+                        which contained all of the rules for the entire schema, instead of just the
+                        current property rule node I meant to close. This must be why Arango
+                        automatically deleted the following property rules and parameters; it
+                        assumed I had finished the code once it hit that extra end-curly brace,
+                        disregarding the rest of the nested items. Whoops... <i><b>**facepalm
+                                intensifies**</b></i>
                     </p>
-                    <p class="post">Once I promptly corrected that silly curly brace mistake in my schema code, I updated the Arango collections for both the competencies and scopes data sets and ran some tests - and it worked! Yay! Sadly, extraneous data inputs are still being validated within object <i>arrays,</i> but the schema now successfully prevents random properties from being validated. I told Alan about it, explaining my little curly brace error, and he was very happy with my discovery. He reassured me that silly little mistakes like that happen to experienced devs all the time, which helped prevent me from facepalming myself into oblivion. Now that I understand better how important the nesting of property items within a JSON schema rule is, I think I might be able to rewrite my schemas to fix the problem of extraneous data inputs within the object arrays... more on that next week. </p>
-                    <p class="post">
-                        I now have a new priority: generating iterations of competency data using Tim's EBNF formal grammar rules code, possibly with some natural language processing! I had a meeting with Alan and Tim on Thursday to discuss the grammar rules for the competencies, and we tweaked it a bit to ensure that it would produce succinct and logical sentences when each piece of the grammar web is parsed and strung together with actual competency words and phrases from the Common Core vocabulary, as well as from Larson's textbook lingo. This all came to be when I asked the golden question: "How are these rules going to be implemented into the code?" In short, Alan and Tim have tasked me with re-writing Tim's EBNF in a language I'll be able to run through a natural language processor, and generate real-live competency data to be used in Arjuna's real competency code. This is a pretty big deal for the project overall, so I feel honored that Tim and Alan trust me with this quest! I'm thinking I'll rewrite the EBNF syntax rules in relax-NG, and possibly transform it into something that can be processed through Python to generate iterations of code? I'm definitely looking forward to Dr. B's counsel on this, since she's the natural-language-processing guru. 
-                    </p>
-                    <p class="post">
-                        On the Wednesday software dev training front, we finally got the <span class="code">post()</span> function working in Postman on my JS album server! Now I can hit the ground running and write more JS to allow post requests to save into the body of my JSON album data library, as well as allow for new types of album data (such as release dates, recording studio names, etc.) to be input by the client. Alan walked me through the JS functions which test the validity of the post() input data. Here's a peek:
-                    </p>
+                    <p class="post">Once I promptly corrected that silly curly brace mistake in my
+                        schema code, I updated the Arango collections for both the competencies and
+                        scopes data sets and ran some tests - and it worked! Yay! Sadly, extraneous
+                        data inputs are still being validated within object <i>arrays,</i> but the
+                        schema now successfully prevents random properties from being validated. I
+                        told Alan about it, explaining my little curly brace error, and he was very
+                        happy with my discovery. He reassured me that silly little mistakes like
+                        that happen to experienced devs all the time, which helped prevent me from
+                        facepalming myself into oblivion. Now that I understand better how important
+                        the nesting of property items within a JSON schema rule is, I think I might
+                        be able to rewrite my schemas to fix the problem of extraneous data inputs
+                        within the object arrays... more on that next week. </p>
+                    <p class="post"> I now have a new priority: generating iterations of competency
+                        data using Tim's EBNF formal grammar rules code, possibly with some natural
+                        language processing! I had a meeting with Alan and Tim on Thursday to
+                        discuss the grammar rules for the competencies, and we tweaked it a bit to
+                        ensure that it would produce succinct and logical sentences when each piece
+                        of the grammar web is parsed and strung together with actual competency
+                        words and phrases from the Common Core vocabulary, as well as from Larson's
+                        textbook lingo. This all came to be when I asked the golden question: "How
+                        are these rules going to be implemented into the code?" In short, Alan and
+                        Tim have tasked me with re-writing Tim's EBNF in a language I'll be able to
+                        run through a natural language processor, and generate real-live competency
+                        data to be used in Arjuna's real competency code. This is a pretty big deal
+                        for the project overall, so I feel honored that Tim and Alan trust me with
+                        this quest! I'm thinking I'll rewrite the EBNF syntax rules in relax-NG, and
+                        possibly transform it into something that can be processed through Python to
+                        generate iterations of code? I'm definitely looking forward to Dr. B's
+                        counsel on this, since she's the natural-language-processing guru. </p>
+                    <p class="post"> On the Wednesday software dev training front, we finally got
+                        the <span class="code">post()</span> function working in Postman on my JS
+                        album server! Now I can hit the ground running and write more JS to allow
+                        post requests to save into the body of my JSON album data library, as well
+                        as allow for new types of album data (such as release dates, recording
+                        studio names, etc.) to be input by the client. Alan walked me through the JS
+                        functions which test the validity of the post() input data. Here's a peek: </p>
                     <div class="code">
                         <p class="codeLine">function validateAlbumInput(inputData) {</p>
-                       
-                        
-                        
-                        
-                        <p class="codeLine">if(!inputData.name) return false;    // does the "name" attribute exist? </p>
-                        
-                        <p class="codeLine">if(typeof(inputData.name) != "string") return false;  // is it a string?</p>
-                        
-                        <p class="codeLine"> if(!inputData.name.length) return false;  // is it not empty?</p>
-                        
-                        <p class="codeLine"> if(!inputData.artist) return false;    // does the "artist" attribute exist? </p>
-                        
-                        <p class="codeLine"> if(typeof(inputData.artist) != "string") return false;   // is it a string?</p>
-                        
-                        <p class="codeLine">if(!inputData.artist.length) return false;    // is it not empty?</p>
-                        
+
+
+
+
+                        <p class="codeLine">if(!inputData.name) return false; // does the "name"
+                            attribute exist? </p>
+
+                        <p class="codeLine">if(typeof(inputData.name) != "string") return false; //
+                            is it a string?</p>
+
+                        <p class="codeLine"> if(!inputData.name.length) return false; // is it not
+                            empty?</p>
+
+                        <p class="codeLine"> if(!inputData.artist) return false; // does the
+                            "artist" attribute exist? </p>
+
+                        <p class="codeLine"> if(typeof(inputData.artist) != "string") return false;
+                            // is it a string?</p>
+
+                        <p class="codeLine">if(!inputData.artist.length) return false; // is it not
+                            empty?</p>
+
                         <p class="codeLine">return true</p>
                         <p class="codeLine">}</p>
                     </div>
-                    <p class="post">
-                        Lots of learning happening real fast. I feel my brain expanding at sonic speeds.
-                    </p>
+                    <p class="post"> Lots of learning happening real fast. I feel my brain expanding
+                        at sonic speeds. </p>
                     <p class="sig">-O' Learnd-ed One</p>
+                </div>
+
+                <div class="blogpost">
+                    <p class="span">Week of 11/9-11/11 - Seventh Week</p>
+                    <p class="post">
+                        School and life this week hit me with a metaphysical bag of bricks, but by some miracle, work was still productive... dare I say fun. I pushed those corrections to the data validation schemas for the scopes and competencies data up to the Arjuna BitBucket repository, where I learned something schwifty about git branches and using <span class="code">git log</span> and <span class="code">git diff</span> commands. Since I was working on two separate unmerged branches for the <span class="code">competencies</span> validation code and the <span class="code">scopes</span> validation code, I didn't realize I needed to be sure that I switched which branch I was on in the terminal using <span class="code">git checkout [branch-name]</span> to see the updates I made to the other schema. So, as I was working on the scopes schema, when I went to check my competencies schema to compare, I saw that the competencies schema had mysteriously reverted to an older version of itself! (It didn't - I was simply on the scopes branch, which didn't have the updates I made on the competencies schema and main branches on it.) Seeing this, I re-updated my competencies schema code on the scopes branch, and you can probably guess what happened when I tried to merge it to main.<b> *dun dun dunnn*</b> BUT good news was, I didn't totally make everything explode. Bitbucket prevents you from merging a branch if there's a merge conflict afoot, phew. Alan showed me how to use <span class="code">git diff</span> to grab all of the commit IDs from all of the commits which had my scopes schema work on it, but none of the silly misunderstood competencies schema edits - so all I had to do was grab those commits and push them to the main branch, and nuke the problematic conflict branch, and boom. Problem solved. But that's definitely the last time I ever push anything directly into the main branch without a proper branch pull request! </p>
+                    <p class="post">
+                        Now that the data validation stuff is out of the way, I'm shifting my focus solely onto creating a <a href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a> using Tim's Formal Competency Grammar EBNF, in the hopes of producing a helpful visualization for our competency data syntax tree! I'm going to try tweaking Tim's EBNF to run it through this <a href="https://bottlecaps.de/rr/ui">Railroad Diagram Generator</a> I found, which takes any input EBNF and turns it into a cool HTML/SVG syntax diagram. Here's a little piece of what the output looks like, using the example EBNF syntax tree the site provides:
+                    </p>
+                    <img src="images/diagram/CharClass.png"/>
+                    <img src="images/diagram/SequenceOrDifference.png"/>
+                    <img src="images/diagram/Primary.png"/>
+                    <img src="images/diagram/StringLiteral.png"/>
+                        <p class="post">
+                        Due to the gargantuan amounts of school work that was foisted upon me this week, I had to cancel our software dev code training on Wednesday...&lt;/3 big sad. I felt really bad about cancelling, but I hadn't made as much progress on the Javascript HTTP request code for music album data as I would've liked in preparation for the training. Alan and Dan were both very understanding, because, ya know, college is muy importante. Priority numero uno, for the next few months... It still hasn't totally sunk in that I'm <i>graduating</i> hecking <i>college.</i> Wows. Who'da thunk it. Certainly not me, 5 years ago. 17-year-old me would've also never imagined that I'd have a <i>real human adult job,</i> on software development, no less - not to mention all the other amazing opportunities that have been bestowed upon me within the past year and a half. I genuinely thought I was going to be living in a van down by the river.
+                    </p>
+                    <p class="post">p.s. the van down by the river living situation still isn't out of the question.</p>
+                    <p class="sig">- Not in a van, but sometimes down by the river</p>
                 </div>
 
             </div>
