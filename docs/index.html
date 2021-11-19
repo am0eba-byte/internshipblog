@@ -291,23 +291,23 @@
 
 
 
-                        <p class="codeLine">if(!inputData.name) return false; // does the "name"
-                            attribute exist? </p>
+                        <p class="codeLine">if(!inputData.name) return false; <span class="comment"
+                                >// does the "name" attribute exist? </span></p>
 
-                        <p class="codeLine">if(typeof(inputData.name) != "string") return false; //
-                            is it a string?</p>
+                        <p class="codeLine">if(typeof(inputData.name) != "string") return false;
+                                <span class="comment">// is it a string?</span></p>
 
-                        <p class="codeLine"> if(!inputData.name.length) return false; // is it not
-                            empty?</p>
+                        <p class="codeLine"> if(!inputData.name.length) return false; <span
+                                class="comment">// is it not empty?</span></p>
 
-                        <p class="codeLine"> if(!inputData.artist) return false; // does the
-                            "artist" attribute exist? </p>
+                        <p class="codeLine"> if(!inputData.artist) return false; <span
+                                class="comment">// does the "artist" attribute exist? </span></p>
 
                         <p class="codeLine"> if(typeof(inputData.artist) != "string") return false;
-                            // is it a string?</p>
+                                <span class="comment">// is it a string?</span></p>
 
-                        <p class="codeLine">if(!inputData.artist.length) return false; // is it not
-                            empty?</p>
+                        <p class="codeLine">if(!inputData.artist.length) return false; <span
+                                class="comment">// is it not empty?</span></p>
 
                         <p class="codeLine">return true</p>
                         <p class="codeLine">}</p>
@@ -319,20 +319,198 @@
 
                 <div class="blogpost">
                     <p class="span">Week of 11/9-11/11 - Seventh Week</p>
-                    <p class="post">
-                        School and life this week hit me with a metaphysical bag of bricks, but by some miracle, work was still productive... dare I say fun. I pushed those corrections to the data validation schemas for the scopes and competencies data up to the Arjuna BitBucket repository, where I learned something schwifty about git branches and using <span class="code">git log</span> and <span class="code">git diff</span> commands. Since I was working on two separate unmerged branches for the <span class="code">competencies</span> validation code and the <span class="code">scopes</span> validation code, I didn't realize I needed to be sure that I switched which branch I was on in the terminal using <span class="code">git checkout [branch-name]</span> to see the updates I made to the other schema. So, as I was working on the scopes schema, when I went to check my competencies schema to compare, I saw that the competencies schema had mysteriously reverted to an older version of itself! (It didn't - I was simply on the scopes branch, which didn't have the updates I made on the competencies schema and main branches on it.) Seeing this, I re-updated my competencies schema code on the scopes branch, and you can probably guess what happened when I tried to merge it to main.<b> *dun dun dunnn*</b> BUT good news was, I didn't totally make everything explode. Bitbucket prevents you from merging a branch if there's a merge conflict afoot, phew. Alan showed me how to use <span class="code">git diff</span> to grab all of the commit IDs from all of the commits which had my scopes schema work on it, but none of the silly misunderstood competencies schema edits - so all I had to do was grab those commits and push them to the main branch, and nuke the problematic conflict branch, and boom. Problem solved. But that's definitely the last time I ever push anything directly into the main branch without a proper branch pull request! </p>
-                    <p class="post">
-                        Now that the data validation stuff is out of the way, I'm shifting my focus solely onto creating a <a href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a> using Tim's Formal Competency Grammar EBNF, in the hopes of producing a helpful visualization for our competency data syntax tree! I'm going to try tweaking Tim's EBNF to run it through this <a href="https://bottlecaps.de/rr/ui">Railroad Diagram Generator</a> I found, which takes any input EBNF and turns it into a cool HTML/SVG syntax diagram. Here's a little piece of what the output looks like, using the example EBNF syntax tree the site provides:
-                    </p>
-                    <img src="images/diagram/CharClass.png"/>
-                    <img src="images/diagram/SequenceOrDifference.png"/>
-                    <img src="images/diagram/Primary.png"/>
-                    <img src="images/diagram/StringLiteral.png"/>
-                        <p class="post">
-                        Due to the gargantuan amounts of school work that was foisted upon me this week, I had to cancel our software dev code training on Wednesday...&lt;/3 big sad. I felt really bad about cancelling, but I hadn't made as much progress on the Javascript HTTP request code for music album data as I would've liked in preparation for the training. Alan and Dan were both very understanding, because, ya know, college is muy importante. Priority numero uno, for the next few months... It still hasn't totally sunk in that I'm <i>graduating</i> hecking <i>college.</i> Wows. Who'da thunk it. Certainly not me, 5 years ago. 17-year-old me would've also never imagined that I'd have a <i>real human adult job,</i> on software development, no less - not to mention all the other amazing opportunities that have been bestowed upon me within the past year and a half. I genuinely thought I was going to be living in a van down by the river.
-                    </p>
-                    <p class="post">p.s. the van down by the river living situation still isn't out of the question.</p>
+                    <p class="post"> School and life this week hit me with a metaphysical bag of
+                        bricks, but by some miracle, work was still productive... dare I say fun. I
+                        pushed those corrections to the data validation schemas for the scopes and
+                        competencies data up to the Arjuna BitBucket repository, where I learned
+                        something schwifty about git branches and using <span class="code">git
+                            log</span> and <span class="code">git diff</span> commands. Since I was
+                        working on two separate unmerged branches for the <span class="code"
+                            >competencies</span> validation code and the <span class="code"
+                            >scopes</span> validation code, I didn't realize I needed to be sure
+                        that I switched which branch I was on in the terminal using <span
+                            class="code">git checkout [branch-name]</span> to see the updates I made
+                        to the other schema. So, as I was working on the scopes schema, when I went
+                        to check my competencies schema to compare, I saw that the competencies
+                        schema had mysteriously reverted to an older version of itself! (It didn't -
+                        I was simply on the scopes branch, which didn't have the updates I made on
+                        the competencies schema and main branches on it.) Seeing this, I re-updated
+                        my competencies schema code on the scopes branch, and you can probably guess
+                        what happened when I tried to merge it to main.<b> *dun dun dunnn*</b> BUT
+                        good news was, I didn't totally make everything explode. Bitbucket prevents
+                        you from merging a branch if there's a merge conflict afoot, phew. Alan
+                        showed me how to use <span class="code">git diff</span> to grab all of the
+                        commit IDs from all of the commits which had my scopes schema work on it,
+                        but none of the silly misunderstood competencies schema edits - so all I had
+                        to do was grab those commits and push them to the main branch, and nuke the
+                        problematic conflict branch, and boom. Problem solved. But that's definitely
+                        the last time I ever push anything directly into the main branch without a
+                        proper branch pull request! </p>
+                    <p class="post"> Now that the data validation stuff is out of the way, I'm
+                        shifting my focus solely onto creating a <a
+                            href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a>
+                        using Tim's Formal Competency Grammar EBNF, in the hopes of producing a
+                        helpful visualization for our competency data syntax tree! I'm going to try
+                        tweaking Tim's EBNF to run it through this <a
+                            href="https://bottlecaps.de/rr/ui">Railroad Diagram Generator</a> I
+                        found, which takes any input EBNF and turns it into a cool HTML/SVG syntax
+                        diagram. Here's a little piece of what the output looks like, using the
+                        example EBNF syntax tree the site provides: </p>
+                    <img src="images/diagram/CharClass.png" />
+                    <img src="images/diagram/SequenceOrDifference.png" />
+                    <img src="images/diagram/Primary.png" />
+                    <img src="images/diagram/StringLiteral.png" />
+                    <p class="post"> Due to the gargantuan amounts of school work that was foisted
+                        upon me this week, I had to cancel our software dev code training on
+                        Wednesday...&lt;/3 big sad. I felt really bad about cancelling, but I hadn't
+                        made as much progress on the Javascript HTTP request code for music album
+                        data as I would've liked in preparation for the training. Alan and Dan were
+                        both very understanding, because, ya know, college is muy importante.
+                        Priority numero uno, for the next few months... It still hasn't totally sunk
+                        in that I'm <i>graduating</i> hecking <i>college.</i> Wows. Who'da thunk it.
+                        Certainly not me, 5 years ago. 17-year-old me would've also never imagined
+                        that I'd have a <i>real human adult job,</i> on software development, no
+                        less - not to mention all the other amazing opportunities that have been
+                        bestowed upon me within the past year and a half. I genuinely thought I was
+                        going to be living in a van down by the river. </p>
+                    <p class="post">p.s. the van down by the river living situation still isn't out
+                        of the question.</p>
                     <p class="sig">- Not in a van, but sometimes down by the river</p>
+                </div>
+
+                <div class="blogpost">
+                    <p class="span">Week of 11/16-11/18 - Eighth Week</p>
+                    <p class="post"> One week, two words: Planning &amp; Meetings. The Arjuna team
+                        converged in a two-day Planning Summit spree, consisting of a pair of 4-hour
+                        long meetings on Wednesday and Thursday this week. I won't get into the
+                        nitty-gritty details of all of the topics that were discussed during the
+                        meetings, since I'm quite sure a hefty portion of it is <span class="code"
+                            >top-secret-classified-company-special-sauce</span>.</p>
+                    <p class="post"> On Tuesday I had some time to crank out the <a
+                            href="images/competency_diagram/diagram/index.html">Competency Formal
+                            Grammar syntax diagram</a> from the Railroad Diagram generator site. Tim
+                        came along at the end of the day to take a look at it with me, and the
+                        visualization made him realize a couple of things needed to be re-written in
+                        the EBNF to more accurately capture what a modified competency needs to
+                        contain, so that the syntax more closely represents what learning objects
+                        and aspects of the LO data a competency will entail. Here's a peek at some
+                        of the SVG syntax trees I generated: </p>
+                    <div class="SVGwrap">
+                        <div class="SVG">
+                            <h3>modified_competency ::=</h3>
+                            <img
+                                src="images/competency_diagram/diagram/diagram/modified_competency.png"
+                                alt="mod comp" />
+                        </div>
+                        <div class="SVG">
+                            <h3>formal_process ::=</h3>
+                            <img src="images/competency_diagram/diagram/diagram/formal_process.png"
+                                alt="formal process" />
+                        </div>
+                        <div class="SVG">
+                            <h3>learning_object ::=</h3>
+                            <img src="images/competency_diagram/diagram/diagram/learning_object.png"
+                                alt="learning object" />
+                        </div>
+                    </div>
+                    <p class="post">
+                        Now that my syntax diagram helped us nail down more exactly the definition of a competency, I'm on a full-court press to generate the competency data iterations using these rules. I'm a little nervous about it since this will be an integral part of the Arjuna software dataset, but I think I can do it. I have a minor in Googling.
+                    </p>
+                    <p class="post">Due to the unyielding Arjuna Planning Summit meeting on
+                        Wednesday, Alan, Dan, and I decided to postpone our software development
+                        training meeting, since getting a bunch of passionate coders and project
+                        managers together in a room for 4 hours runs the inevitable risk of strong
+                        opinions flowing over the scheduled meeting end-time. Although, I will say I
+                        think I've finally made some decent (albiet bug-ridden) progress on my JSON
+                        music album HTTP server script. I was able to write in the beginnings of a
+                        function which checks to make sure that the client's <span class="code"
+                            >post()</span> request of an album doesn't have an album name that
+                        matches the name of an album already present within the JSON library, to
+                        prevent any duplicate albums from being uploaded. Here's a peek at that
+                        function: </p>
+                    <div class="code">
+                        <p class="codeLine">function doesAlbumExist(inputData, album){</p>
+
+                        <p class="codeLine">let albums = loadAlbumData()</p>
+
+                        <p class="codeLine"><span class="comment">// Does the input data have an
+                                album name that is equal to the album name of an existing JSON
+                                object?</span></p>
+
+                        <p class="codeLine">if(inputData.name = albums.name) return false;</p>
+
+                        <p class="codeLine"><span class="comment">// If not, return true</span></p>
+
+                        <p class="codeLine">return true</p>
+
+
+                        <p class="codeLine">}</p>
+
+                    </div>
+                    <p class="post">I also wrote some more functions into the <span class="code"
+                            >post()</span> method, which I have not been able to get working yet. My
+                        goal is to allow the validation functions to check the client's <span
+                            class="code">post()</span> content body against my given restrictions,
+                        and if the data is valid, have it be saved and added to the existing JSON
+                        album library file. I've been watching and reading many tutorials on this,
+                        so hopefully I will have it working by next Wednesday. I feel like I'm
+                        close!</p>
+                    <div class="code">
+                        <p class="codeLine">app.post("/albums", (req, res) => {</p>
+                        <p class="codeLine"> let newAlbumData = req.body</p>
+                        <p class="codeLine">let albums = loadAlbumData();</p>
+
+                        <p class="codeLine">if(!albums){ res.send("could not load album data"); }
+                                <span class="comment"> \\ return an error if the existing album file
+                                cannot be found</span></p>
+
+
+                        <p class="codeLine"> let isvalid = validateAlbumInput(newAlbumData);</p>
+
+                        <p class="codeLine">if(!isvalid){</p>
+
+                        <p class="codeLine">res.status(400)</p>
+
+                        <p class="codeLine">res.send("o no")<span class="comment"> \\ if the
+                                client's post() request body is invalidated by the
+                                validateAlbumInput function, return an error. If not, pass it
+                                through...</span></p>
+
+                        <p class="codeLine">} else {</p>
+                        <p class="codeLine"><span class="comment">\\ This is the new code I wrote in
+                                attempts to use the .fs Node.js module to read the existing albums
+                                file and write the client's request body into the file.</span></p>
+                        <p class="codeLine"> var data = fs.readFileSync('/albums')</p>
+                        <p class="codeLine"> var newAlbum = JSON.parse(newAlbumData)</p>
+
+                        <p class="codeLine">var data = JSON.stringify(newAlbum); <span
+                                class="comment"> \\ In case you're wondering what the heck all this
+                                JSON.parse and JSON.stringify jazz is all about, I watched a
+                                tutorial that told me that you must tell the function HOW to read
+                                the incoming data in order to save it properly - otherwise, the
+                                computer just thinks everything is flat, meaningless, unrelated
+                                strings of text. We need to first parse the JSON out of the new
+                                album data and then stringify it in order to write it into our
+                                existing JSON library. (or so the Youtube Coder Dude
+                            says.)</span></p>
+
+                        <p class="codeLine">fs.writeFile(albums, data, finished);</p>
+
+                        <p class="codeLine">function finished(err) {</p>
+                        <p class="codeLine"> console.log('thanks for your album!');</p>
+                        <p class="codeLine"> }</p>
+                        <p class="codeLine"> }</p>
+
+
+                        <p>res.json(albums)</p>
+
+                        <p>})</p>
+                    </div>
+                    <p class="post"> Right now, my HTTP post() requests in Postman are returning
+                            <span class="code">o no</span>, which means there's something up with my
+                            <span class="code">validateAlbumInput()</span> function. I'll have
+                        plenty of time this weekend to investigate more into this! </p>
+                    <p class="sig">-Mia</p>
                 </div>
 
             </div>

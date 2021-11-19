@@ -1,6 +1,6 @@
 /* GENERAL STYLE */
 body {
-background-image: linear-gradient(to right,#2a2a2a, #7ca19e, #799177, #789a97, #2a2a2a);
+background-image: linear-gradient(to right,#363237, #2d4262, #73605b, #2d4262, #363237);
 color: white;
 
 }
@@ -10,7 +10,7 @@ color: white;
 /* HEADER */
 
 header {
-    background-image:radial-gradient(#366981, #333232);
+    background-image:radial-gradient(#476e61, #73605b, #2d4262);
     text-align:center;
    border-radius: 20px;
    padding: .5px;
@@ -42,7 +42,7 @@ img.headImg {
 /* BLOG BODY */
 
 section {
-    background-image: linear-gradient(to left,#5a6c5c, gray, #789a96, gray, #5a6c5c);
+    background-image: linear-gradient(to left, #476e61, #73605b, #2d4262, #363237, #2d4262, #73605b, #476e61);
     margin: 30px;
     border-radius: 20px;
 }
@@ -74,6 +74,7 @@ div.blogpost {
     padding-left: 10px;
 padding-right: 10px;
 padding-top: 2px;
+margin:20px;
   
 }
 
@@ -115,16 +116,34 @@ font-weight: bold;
 width: 60%;
 margin: auto;
 font-family:monospace;
+background-color: #dbdbdb;
+border-radius: 3px;
+padding: 1px;
 }
 
 b {
    font-weight: bold;
 }
 
+span.comment {
+    color:blueviolet;
+}
+
+div.SVGwrap {
+    display:flex;
+    flex-direction: column;
+justify-content: space-evenly;
+}
+
+div.SVG {
+    flex:1;
+    margin: auto;
+}
+
 /* FOOTER */
 
 footer {
-    background-image:radial-gradient(#366981, #333232);
+    background-image:radial-gradient( #2d4262, #73605b, #476e61);
     text-align:center;
    border-radius: 20px;
    padding: .2px;
